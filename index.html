@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Список Разрешенных Сайтов</title>
   <style>
     body {
@@ -12,7 +12,6 @@
       min-height: 100vh;
       color: #000;
     }
-
     h1 {
       text-align: center;
       padding: 2rem 1rem;
@@ -21,7 +20,6 @@
       font-weight: bold;
       text-transform: uppercase;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -30,7 +28,6 @@
       max-width: 1200px;
       margin: auto;
     }
-
     .card {
       background: white;
       border-radius: 16px;
@@ -43,40 +40,32 @@
       text-decoration: none;
       color: inherit;
     }
-
     .card:hover {
       transform: translateY(-5px);
     }
-
     .card img {
       width: 32px;
       height: 32px;
     }
-
     .card span {
       font-weight: 500;
       font-size: 1rem;
     }
-
     #playButton {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      padding: 10px 15px;
-      background: #fff;
-      border: 2px solid #000;
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid black;
       border-radius: 5px;
-      cursor: pointer;
       font-weight: bold;
-      z-index: 100;
+      cursor: pointer;
+      z-index: 1000;
     }
-
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5rem;
-      }
-      .grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -88,37 +77,8 @@
       <img src="https://www.google.com/s2/favicons?domain=gosuslugi.ru" alt="gosuslugi">
       <span>Госуслуги</span>
     </a>
-    <a class="card" href="https://vk.com/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=vk.com" alt="VK">
-      <span>ВКонтакте</span>
-    </a>
-    <a class="card" href="https://rutube.ru/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=rutube.ru" alt="rutube">
-      <span>RuTube</span>
-    </a>
-    <a class="card" href="https://vkvideo.ru/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=vkvideo.ru" alt="vkvideo">
-      <span>VK Видео</span>
-    </a>
-    <a class="card" href="https://ru.ruwiki.ru/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=ru.ruwiki.ru" alt="ruwiki">
-      <span>РуВики</span>
-    </a>
-    <a class="card" href="https://www.sberbank.ru/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=sberbank.ru" alt="sber">
-      <span>Сбербанк</span>
-    </a>
-    <a class="card" href="https://max.ru/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=max.ru" alt="max">
-      <span>MAX</span>
-    </a>
-    <a class="card" href="https://контракт-на-сво.рф/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=контракт-на-сво.рф" alt="сво">
-      <span>Контракт на СВО</span>
-    </a>
   </div>
 
-  
   <audio id="anthem" loop>
     <source src="gimn.mp3" type="audio/mpeg">
     Ваш браузер не поддерживает аудиоэлемент.
@@ -127,28 +87,31 @@
   <button id="playButton">▶ Включить гимн</button>
 
   <script>
-    const audio = document.getElementById('anthem');
-    const playButton = document.getElementById('playButton');
-    
-    
-    audio.volume = 1.0;
-    audio.play().catch(e => {
-      console.log("Автовоспроизведение заблокировано. Требуется взаимодействие.");
-    });
-    
-    
-    playButton.addEventListener('click', () => {
-      audio.play();
-      playButton.textContent = audio.paused ? '▶ Включить гимн' : '❚❚ Пауза';
-    });
-    
-   
-    audio.addEventListener('play', () => {
-      playButton.textContent = '❚❚ Пауза';
-    });
-    
-    audio.addEventListener('pause', () => {
-      playButton.textContent = '▶ Включить гимн';
+    document.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('anthem');
+      const playButton = document.getElementById('playButton');
+      
+      audio.volume = 1.0;
+
+      playButton.addEventListener('click', function() {
+        if (audio.paused) {
+          audio.play()
+            .then(() => {
+              playButton.textContent = '❚❚ Пауза';
+            })
+            .catch(error => {
+              console.error('Ошибка воспроизведения:', error);
+              alert('Не удалось воспроизвести аудио. Проверьте файл gimn.mp3');
+            });
+        } else {
+          audio.pause();
+          playButton.textContent = '▶ Включить гимн';
+        }
+      });
+      
+      audio.play().catch(e => {
+        console.log('Автовоспроизведение заблокировано. Требуется клик.');
+      });
     });
   </script>
 </body>
