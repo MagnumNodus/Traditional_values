@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Список Разрешенных Сайтов</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, white 33.3%, blue 33.3%, blue 66.6%, red 66.6%);
+      min-height: 100vh;
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.85);
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .card span {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>СПИСОК РАЗРЕШЕННЫХ САЙТОВ</h1>
+  <div class="grid">
+    <a class="card" href="https://gosuslugi.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=gosuslugi.ru" alt="gosuslugi">
+      <span>Госуслуги</span>
+    </a>
+    <a class="card" href="https://vk.com/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=vk.com" alt="VK">
+      <span>ВКонтакте</span>
+    </a>
+    <a class="card" href="https://rutube.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=rutube.ru" alt="rutube">
+      <span>RuTube</span>
+    </a>
+    <a class="card" href="https://vkvideo.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=vkvideo.ru" alt="vkvideo">
+      <span>VK Видео</span>
+    </a>
+    <a class="card" href="https://ru.ruwiki.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=ru.ruwiki.ru" alt="ruwiki">
+      <span>РуВики</span>
+    </a>
+    <a class="card" href="https://www.sberbank.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=sberbank.ru" alt="sber">
+      <span>Сбербанк</span>
+    </a>
+    <a class="card" href="https://контракт-на-сво.рф/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=контракт-на-сво.рф" alt="сво">
+      <span>Контракт на СВО</span>
+    </a>
+  </div>
+</body>
+</html>
