@@ -58,9 +58,25 @@
       font-size: 1rem;
     }
 
+    #playButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background: #fff;
+      border: 2px solid #000;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 100;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -92,7 +108,7 @@
       <img src="https://www.google.com/s2/favicons?domain=sberbank.ru" alt="sber">
       <span>Сбербанк</span>
     </a>
- <a class="card" href="https://max.ru/" target="_blank">
+    <a class="card" href="https://max.ru/" target="_blank">
       <img src="https://www.google.com/s2/favicons?domain=max.ru" alt="max">
       <span>MAX</span>
     </a>
@@ -101,5 +117,39 @@
       <span>Контракт на СВО</span>
     </a>
   </div>
+
+  
+  <audio id="anthem" loop>
+    <source src="gimn.mp3" type="audio/mpeg">
+    Ваш браузер не поддерживает аудиоэлемент.
+  </audio>
+
+  <button id="playButton">▶ Включить гимн</button>
+
+  <script>
+    const audio = document.getElementById('anthem');
+    const playButton = document.getElementById('playButton');
+    
+    
+    audio.volume = 1.0;
+    audio.play().catch(e => {
+      console.log("Автовоспроизведение заблокировано. Требуется взаимодействие.");
+    });
+    
+    
+    playButton.addEventListener('click', () => {
+      audio.play();
+      playButton.textContent = audio.paused ? '▶ Включить гимн' : '❚❚ Пауза';
+    });
+    
+   
+    audio.addEventListener('play', () => {
+      playButton.textContent = '❚❚ Пауза';
+    });
+    
+    audio.addEventListener('pause', () => {
+      playButton.textContent = '▶ Включить гимн';
+    });
+  </script>
 </body>
 </html>
