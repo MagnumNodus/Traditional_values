@@ -67,6 +67,9 @@
       h1 {
         font-size: 1.5rem;
       }
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -74,8 +77,36 @@
   <h1>СПИСОК РАЗРЕШЕННЫХ САЙТОВ</h1>
   <div class="grid">
     <a class="card" href="https://gosuslugi.ru/" target="_blank">
-      <img src="https://www.google.com/s2/favicons?domain=gosuslugi.ru" alt="gosuslugi">
+      <img src="https://www.google.com/s2/favicons?domain=gosuslugi.ru" alt="Госуслуги">
       <span>Госуслуги</span>
+    </a>
+    <a class="card" href="https://vk.com/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=vk.com" alt="ВКонтакте">
+      <span>ВКонтакте</span>
+    </a>
+    <a class="card" href="https://rutube.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=rutube.ru" alt="RuTube">
+      <span>RuTube</span>
+    </a>
+    <a class="card" href="https://vkvideo.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=vkvideo.ru" alt="VK Видео">
+      <span>VK Видео</span>
+    </a>
+    <a class="card" href="https://ru.ruwiki.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=ru.ruwiki.ru" alt="РуВики">
+      <span>РуВики</span>
+    </a>
+    <a class="card" href="https://www.sberbank.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=sberbank.ru" alt="Сбербанк">
+      <span>Сбербанк</span>
+    </a>
+    <a class="card" href="https://max.ru/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=max.ru" alt="MAX">
+      <span>MAX</span>
+    </a>
+    <a class="card" href="https://xn--80afcdbalict6afooklqi5o.xn--p1ai/" target="_blank">
+      <img src="https://www.google.com/s2/favicons?domain=xn--80afcdbalict6afooklqi5o.xn--p1ai" alt="Контракт на СВО">
+      <span>Контракт на СВО</span>
     </a>
   </div>
 
@@ -92,7 +123,7 @@
       const playButton = document.getElementById('playButton');
       
       audio.volume = 1.0;
-
+      
       playButton.addEventListener('click', function() {
         if (audio.paused) {
           audio.play()
@@ -101,7 +132,7 @@
             })
             .catch(error => {
               console.error('Ошибка воспроизведения:', error);
-              alert('Не удалось воспроизвести аудио. Проверьте файл gimn.mp3');
+              alert('Для воспроизведения требуется взаимодействие со страницей. Нажмите на кнопку еще раз.');
             });
         } else {
           audio.pause();
@@ -109,8 +140,9 @@
         }
       });
       
+     
       audio.play().catch(e => {
-        console.log('Автовоспроизведение заблокировано. Требуется клик.');
+        console.log('Автовоспроизведение заблокировано. Требуется клик по странице.');
       });
     });
   </script>
